@@ -17,7 +17,7 @@ namespace J_Tools_For_Rehoo.DataAccess
 
         public J_RehooData()
         {
-            this.db = new SqlOperator(@"Server=115.29.179.174;Initial Catalog=RehooTools;Integrated Security=false;User ID=jz1;Password=jz6666281886");
+            this.db = new SqlOperator(@"Server=120.26.38.208;Initial Catalog=RehooTools;Integrated Security=false;User ID=rehoo;Password=rehoo");
         }
 
 

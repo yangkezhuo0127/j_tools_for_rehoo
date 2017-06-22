@@ -1,0 +1,9 @@
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\bin\Debug\J_Tools_For_Rehoo.exe
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\bin\Debug\J_Tools_For_Rehoo.pdb
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.csprojResolveAssemblyReference.cache
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.frmMain.resources
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.J_Forms.frmGrpSetting.resources
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.Properties.Resources.resources
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.csproj.GenerateResource.Cache
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.exe
+D:\Programe\GIT\j_tools_for_rehoo\J_Tools_For_Rehoo\obj\Debug\J_Tools_For_Rehoo.pdb

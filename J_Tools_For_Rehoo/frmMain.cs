@@ -23,7 +23,8 @@ namespace J_Tools_For_Rehoo
         private J_RehooData j_rData;
 
         Action<string,DataTable> jsave;
-        Action jServer,jCreate;
+        //Action jServer;
+        Action jCreate;
  
         private FontManager opFont;
         private PicManager opPic;
@@ -31,7 +32,7 @@ namespace J_Tools_For_Rehoo
 
 
 
-        private DataTable dt=new DataTable("dt");
+        //private DataTable dt=new DataTable("dt");
 
         public frmMain()
         {
@@ -44,7 +45,7 @@ namespace J_Tools_For_Rehoo
  
 
             this.jsave += this.SaveToServer;
-            this.jServer += this.GetServerData;
+            //this.jServer += this.GetServerData;
 
             this.jCreate += this.CreateFiles;
 
@@ -73,11 +74,11 @@ namespace J_Tools_For_Rehoo
                     lvItem.SubItems.Add(filename);
                     lvItem.SubItems.Add(filefullname);
                     this.lvPics.Items.Add(lvItem);
-                    DataRow r = dt.NewRow();
-                    r["guid"] = lvItem.Tag;
-                    r["fileName"] = filename;
-                    r["filePath"] = filefullname;
-                    dt.Rows.Add(r);
+                    //DataRow r = dt.NewRow();
+                    //r["guid"] = lvItem.Tag;
+                    //r["fileName"] = filename;
+                    //r["filePath"] = filefullname;
+                    //dt.Rows.Add(r);
                                      
                     
                 }
@@ -87,24 +88,24 @@ namespace J_Tools_For_Rehoo
         private void tlSave_Click(object sender, EventArgs e)
         {
 
-            SetCtrlState(false);
-            dt.Rows.Clear();
-            foreach (ListViewItem item in this.lvPics.Items)
-            {
-                DataRow r = dt.NewRow();
-                r["guid"] = item.Tag;
-                r["fileName"] = item.SubItems[1].Text;
-                r["filePath"] = item.SubItems[2].Text;
-                dt.Rows.Add(r);
-            }
-            IAsyncResult ar = jsave.BeginInvoke(this.txtFont.Text,this.dt, r =>
-            {
-                this.BeginInvoke(new Action(() => {
-                    SetCtrlState(true);
-                }));
+            //SetCtrlState(false);
+            //dt.Rows.Clear();
+            //foreach (ListViewItem item in this.lvPics.Items)
+            //{
+            //    DataRow r = dt.NewRow();
+            //    r["guid"] = item.Tag;
+            //    r["fileName"] = item.SubItems[1].Text;
+            //    r["filePath"] = item.SubItems[2].Text;
+            //    dt.Rows.Add(r);
+            //}
+            //IAsyncResult ar = jsave.BeginInvoke(this.txtFont.Text,this.dt, r =>
+            //{
+            //    this.BeginInvoke(new Action(() => {
+            //        SetCtrlState(true);
+            //    }));
                 
-                MessageBox.Show("保存成功！");
-            }, null);
+            //    MessageBox.Show("保存成功！");
+            //}, null);
 
         }
 
@@ -129,19 +130,26 @@ namespace J_Tools_For_Rehoo
         //从服务器获取数据
         private void GetServerData()
         {     
-            this.BeginInvoke(new Action(() =>
-            {
-                this.txtFont.Text = j_rData.ReadFontContent();
-                dt = j_rData.ReadPics();
-                foreach (DataRow row in dt.Rows)
-                {
-                    ListViewItem lvItem = new ListViewItem((this.lvPics.Items.Count + 1).ToString());
-                    lvItem.Tag = row["guid"];
-                    lvItem.SubItems.Add(row["fileName"].ToString());
-                    lvItem.SubItems.Add(row["filePath"].ToString());
-                    this.lvPics.Items.Add(lvItem);
-                }
-            }));
+            //this.BeginInvoke(new Action(() =>
+            //{
+            //    try
+            //    {
+            //        this.txtFont.Text = j_rData.ReadFontContent();
+            //        dt = j_rData.ReadPics();
+            //        foreach (DataRow row in dt.Rows)
+            //        {
+            //            ListViewItem lvItem = new ListViewItem((this.lvPics.Items.Count + 1).ToString());
+            //            lvItem.Tag = row["guid"];
+            //            lvItem.SubItems.Add(row["fileName"].ToString());
+            //            lvItem.SubItems.Add(row["filePath"].ToString());
+            //            this.lvPics.Items.Add(lvItem);
+            //        }
+            //    }
+            //    catch
+            //    {
+
+            //    }
+            //}));
         }
 
         private void CreateFiles()
@@ -192,10 +200,12 @@ namespace J_Tools_For_Rehoo
             this.tlDel.Enabled = false;
             this.tlMoveDown.Enabled = false;
             this.tlMoveUp.Enabled = false;
-            IAsyncResult ar = jServer.BeginInvoke(r =>
-            {
-                MessageBox.Show("加载成功！");
-            }, null);
+
+            //IAsyncResult ar = jServer.BeginInvoke(r =>
+            //{
+            //    MessageBox.Show("加载成功！");
+            //}, null);
+         
         }
 
         private void tlCreate_Click(object sender, EventArgs e)
@@ -214,7 +224,7 @@ namespace J_Tools_For_Rehoo
             if (DialogResult.OK == MessageBox.Show("您确定要全部删除吗?","提示", MessageBoxButtons.OKCancel,MessageBoxIcon.Question))
             {
                 this.lvPics.Items.Clear();
-                this.dt.Rows.Clear();
+                //this.dt.Rows.Clear();
             }
         }
 
@@ -245,12 +255,12 @@ namespace J_Tools_For_Rehoo
             {
                 foreach (ListViewItem item in this.lvPics.SelectedItems)
                 {
-                    DataRow row = this.dt.Rows.Cast<DataRow>().Where(r =>
-                    {
-                        return r["guid"] == item.Tag;
-                    }).First();
+                    //DataRow row = this.dt.Rows.Cast<DataRow>().Where(r =>
+                    //{
+                    //    return r["guid"] == item.Tag;
+                    //}).First();
 
-                    this.dt.Rows.Remove(row);
+                    //this.dt.Rows.Remove(row);
 
 
                     for (int i = item.Index+1; i < this.lvPics.Items.Count; i++)
@@ -375,10 +385,10 @@ namespace J_Tools_For_Rehoo
             this.tlMoveDown.Enabled = false;
             this.tlMoveUp.Enabled = false;
             this.lvPics.Items.Clear();
-            IAsyncResult ar = jServer.BeginInvoke(r =>
-            {
-                MessageBox.Show("加载成功！");
-            }, null);
+            //IAsyncResult ar = jServer.BeginInvoke(r =>
+            //{
+            //    MessageBox.Show("加载成功！");
+            //}, null);
         }
 
         private void txtFileName_KeyUp(object sender, KeyEventArgs e)
